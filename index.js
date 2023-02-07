@@ -24,6 +24,12 @@ const io = socket(server);
 io.on("connection", (socket) => {
   console.log("made socket connection", socket.id);
 
+  ChatModel.find().limit(50)
+  .exec((err, msg) => {
+    socket.emit('chatHistory', msg)
+   //console.log(msg, "message")
+  })
+
   socket.on("chat", function (data) {
     io.sockets.emit("chat", data);
 
