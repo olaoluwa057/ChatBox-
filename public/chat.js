@@ -17,7 +17,6 @@ btn.addEventListener("click", function () {
     message: message.value,
     sender: handle.value,
   });
-
   message.value = "";
 });
 

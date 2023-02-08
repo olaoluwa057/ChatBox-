@@ -2,14 +2,14 @@ const express = require("express");
 const socket = require("socket.io");
 const mongosse = require("mongoose");
 const ChatModel = require("./models/chat");
+require('dotenv').config();
 
 // App setup
 const app = express();
 const server = app.listen(4000);
 
 /// connect to mongoDB
-const dbURL =
-  "mongodb+srv://databaseUser:XSwvwIk4TxJHQiKK@chatbox.hri9hpv.mongodb.net/?retryWrites=true&w=majority";
+const dbURL = process.env.DB_HOST;
 
 mongosse
   .connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true })
